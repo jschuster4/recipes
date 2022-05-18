@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container" style="display: flex;">
+        <div class="container">
+            <h1>Welcome {{session['first_name']}}</h1>
+            <h3>These are the recipes:</h3>
+            <table class="table table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Under 30 Minutes?</th>
+                    <th>Actions</th>
+                </tr>
+                {% for rows in recipes %}
+                <tr>
+                    <td>{{rows.name}}</td>
+                    <td>{{rows.under_30_minutes}}</td>
+                    <td>
+                        {% if rows.user_id == session['user_id'] %}
+                            <a href="/recipes/{{rows.id}}">view instructions</a>
+                            <a href="/recipes/edit/{{rows.id}}">edit</a>
+                            <a href="/recipes/delete/{{rows.id}}">delete</a>
+                        {% else %}
+                            <a href="/recipes/{{rows.id}}">view instructions</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div>
+            <a href="/recipes/create">Create</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    
+</body>
+</html>

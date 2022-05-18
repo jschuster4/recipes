@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+</head>
+<body>
+    <h3>Welcome {{session['first_name']}}</h1>
+    <h3>{{one_recipe.name}}</h3>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Description</th>
+                <td>{{one_recipe.description}}</td>
+            </tr>
+            <tr>
+                <th>Under 30 Minutes?</th>
+                <td>{{one_recipe.under_30_minutes}}</td>
+            </tr>
+            <tr>
+                <th>Instructions</th>
+                <td>{{one_recipe.instruction}}</td>
+            </tr>
+            <tr>
+                <th>Date Made</th>
+                <td>{{one_recipe.date_made_on}}</td>
+                <!-- not showing up for just this object -->
+            </tr>
+        </table>
+    </div>
+    <a href="/success">Dashboard</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>
